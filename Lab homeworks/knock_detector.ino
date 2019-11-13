@@ -15,8 +15,11 @@ const int
 Button 
   button(BUTTON_PIN);
 
+bool 
+  buzzerWasKnocked = false,
+  songStarted = false;
+
 int pasiveBuzzerValue;
-bool buzzerWasKnocked = false;
 unsigned int previousTimeKnocked;
 
 
@@ -37,7 +40,7 @@ void loop() {
 
   button.read();
   
-  if(button.wasReleased()){
+  if(button.wasReleased() && songStarted){
     buzzerWasKnocked = false;
     stopSong(ACTIVE_BUZZER_PIN);
   }
@@ -49,6 +52,7 @@ void loop() {
 
   if(timerIsFinished(previousTimeKnocked, activeBuzzerDelay * SECOND) && buzzerWasKnocked){
     startSong(ACTIVE_BUZZER_PIN);
+    songStarted = true;
   }
 }
 
@@ -81,5 +85,6 @@ void startSong(int pin)
 
 void stopSong(int pin)
 {
+  songStarted = false;
   noTone(pin);
 }
