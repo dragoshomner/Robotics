@@ -51,20 +51,15 @@ void loop() {
 
   readJoy();
 
-  if(!digitIsSet[digitPosition]){
-    joyPositionCheck();
-    blinkDigit(digitPosition);
-  }
-  else{
-    digitPosition = nextPosition(digitPosition);
-    currentDigit = displayDigits[digitPosition];
-  }
+  joyPositionCheck();
   
   joyButtonCheck();
 
   setDisplayDigits();
   
   sevseg.setChars(displayContent);
+  
+  blinkDigit(digitPosition);
   
   sevseg.refreshDisplay();
 }
@@ -150,27 +145,17 @@ char previousDigit(char c){
 
 int nextPosition(int pos)
 {
-  for(int i = 0 ; i < numDigits ; i++){
-    pos = (pos + 1) % numDigits;
-    if(!digitIsSet[pos]){
-      return pos;
-    }
-  }
-  return 0;
+  pos = (pos + 1) % numDigits;
+  return pos;
 }
 
 int previousPosition(int pos)
 {
-  for(int i = 0 ; i < numDigits ; i++){
-    pos = (pos - 1) % numDigits;
-    if(pos < 0){
-      pos = numDigits - 1;
-    }
-    if(!digitIsSet[pos]){
-      return pos;
-    }
+  pos = (pos - 1) % numDigits;
+  if(pos < 0){
+    pos = numDigits - 1;
   }
-  return 0;
+  return pos;
 }
 
 void readJoy()
@@ -229,14 +214,17 @@ void joyXPositionCheck()
 void joyPositionCheck()
 {
   joyYPositionCheck();  
-  joyXPositionCheck();
+
+  if(!digitIsSet[digitPosition]){
+    joyXPositionCheck();
+  }
 }
 
 void joyButtonCheck()
 {
   joyButton.read();
   if(joyButton.wasReleased()){
-    digitIsSet[digitPosition] = true;
+    digitIsSet[digitPosition] = !digitIsSet[digitPosition];
   }
 }
 
