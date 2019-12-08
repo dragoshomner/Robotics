@@ -13,3 +13,5 @@ Technical requirements:
 - Joystick
 - MAX7219 Driver
 - 2 Ultrasonic Sensors US-100
+- Breadboards
+- Wires
