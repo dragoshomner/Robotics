@@ -8,6 +8,7 @@ If all 600 muscles in your body pulled in one direction, you could lift 25 tons.
 MemMove helps you to improve your attention, memory, physical condition and reaction speed. The rules are simple: you will see on the matrix a sequence of instructions which you will have to execute. Sounds easy? Let's start!
 
 Technical requirements:
+- Arduino UNO
 - 8x8 LED Matrix
 - LCD
 - Joystick
