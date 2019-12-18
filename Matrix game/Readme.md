@@ -106,13 +106,19 @@ Game example video:
 <h3>Game specifications</h3>
 
 a. Score - done
+
 b. Progress in difficulty - complexity - done
+
 c. i. 2 players ii. levels iii.time pressure iv. more lives (extra time)
+
 d. Save-able highscore in EEPROM - done (even three highscores, depending on the difficulty)
 
 <h3>LCD</h3>
 
 a. Starting game - done
+
 b. Highscore - done
+
 c. Settings - change starting level and change difficulty
+
 d. Info - creator name, github, game name, @UnibucRobotics
