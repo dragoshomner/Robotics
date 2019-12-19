@@ -80,9 +80,11 @@ The default values are one for starting level and medium for diffculty. Use the 
 
 Firstly, choose the number of players, and go to the next page. Now, the sensors are calibrating and the game zone must be clear. After that, the current player go inside the area, and the timer starts to count down. Now, the game starts. Follow the instructions (the timer is off), and after the square blinks (timers is on), is your turn to move. 
 
+<strong>Important!</strong> The position of the body when executing the requested position is the following: the closest foot to the wall must be parallel with this one and the another one must be outside the game zone. <strong>See the video from links.</strong>
+
 If the movement is correct, a tick will be displayed, else a X. <strong>Pay attention!</strong> After every move, you have to go back to center. Both of your legs have to be in the same position.
 
-Your current position will be always displayed on the matrix. Try to understand the game and how the sensors calculate your distance. If you think that you are in a direction and the sensor does not detect you, wait a little or go closer to the willing point, until the game gets your position. Is your responsability to check if the sensors are placed correctly and the game zone is adequate.
+Your current position will be always displayed on the matrix. Try to understand the game and how the sensors calculate your distance. If you think that you are in a direction and the sensor does not detect you, wait a little or go closer to the willing point, until the game gets your position (the best position is with the foot at 1/3 of the square to the wall). Is your responsability to check if the sensors are placed correctly and the game zone is adequate.
 
 When time finishes, all rows will be displayed concurrently. If you selected more than one player, current one have to get out of the game zone, and the next to go inside. The system will detect automatically when he is on the center, and will start the counter down. This will repeat for every player.
 
