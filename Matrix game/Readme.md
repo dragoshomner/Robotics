@@ -14,6 +14,8 @@
   - [Info](#info)
 - [Links](#links)
 - [Meeting requirements](#meeting-requirements)
+  - [Game specifications](#game-specifications)
+  - [LCD](#lcd)
 
 ## Description
 
@@ -24,6 +26,7 @@ With 86 billion neurons, 400 miles of capillaries, 100 thousand miles of axons (
 If all 600 muscles in your body pulled in one direction, you could lift 25 tons. Again, that's amazing! Despite this fact, more than 80% of adults do not meet the guidelines for both aerobic and muscle-strengthening activities, and more than 80% of adolescents do not do enough aerobic physical activity to meet the guidelines for youth. Again, that's sad! The good news are that this statistics can be improved :)
 
 MemMove helps you to improve your attention, memory, physical condition and reaction speed. The rules are simple: you will see on the matrix a sequence of instructions which you will have to execute. Sounds easy? Let's start!
+
 
 ## Technical requirements
 
@@ -96,14 +99,13 @@ In this screen you can view some informations about the game, for instance: game
 ## Links
 <a name="links" />
 
-Product video: 
-
-Game example video:
+Product video: https://www.youtube.com/watch?v=5owO_XoB7Ws&feature=share&fbclid=IwAR0uS0Symy4o3_kpNaL7T0XnYtAGVlsq3yQAFhSUTi0Xscvq3sj1_aPzH_8
 
 ## Meeting requiremets
 <a name="meeting-requirements" />
 
 <h3>Game specifications</h3>
+<a name="game-specifications" />
 
 a. Score - done
 
@@ -114,6 +116,7 @@ c. i. 2 players ii. levels iii.time pressure iv. more lives (extra time)
 d. Save-able highscore in EEPROM - done (even three highscores, depending on the difficulty)
 
 <h3>LCD</h3>
+<a name="lcd" />
 
 a. Starting game - done
 
