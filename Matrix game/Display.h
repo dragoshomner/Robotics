@@ -49,7 +49,9 @@ Display::Display(int RS, int enable, int d4, int d5, int d6, int d7) :
   LiquidCrystal(RS, enable, d4, d5, d6, d7){ 
     
   begin(displayWidth, displayLines);
-    
+
+  // initialize all menu display texts
+  
   menuTitle[MAIN_MENU] = "Main Menu";
   menuTitle[GAME] = "Start Game";
   menuTitle[HIGHSCORE] = "Highscore";
@@ -91,6 +93,8 @@ void Display::initialize()
   printContent();
   lastTimeUpdated = millis();
 }
+
+// the update method triggers only when the user is not in the game session
 
 void Display::update()
 {
@@ -142,6 +146,8 @@ void Display::update()
    }
 }
 
+// the refresh method triggers when the game started
+
 void Display::refresh()
 {
   if(currentScreen == PROCESSING_GAME_SCREEN){
@@ -165,6 +171,8 @@ void Display::refresh()
       initialize();
     }
 
+    // update the display screen during the game to show score and remaning time
+    // it is updated at every 500 millis so as the avoid the annoying blinking
     if((unsigned long)millis() - lastTimeUpdated >= SECOND / 2){
       initialize();
     }
@@ -193,6 +201,9 @@ void Display::refresh()
     }
   }
 }
+
+// title = the text from the first line of the display, which does not change if you scroll through menu
+// content = the text from the second line of the display, which changes every time you scoll up or down
 
 void Display::printTitle()
 {
@@ -275,6 +286,8 @@ void Display::printContent()
   print(content);
 }
 
+// calculte the next content text
+
 int Display::nextChild()
 {
   return currentChild < numberOfChildren ? currentChild + 1 : 1;
@@ -284,6 +297,8 @@ int Display::previousChild()
 {
   return currentChild < 2 ? numberOfChildren : currentChild - 1;
 }
+
+//these two methods are used when set the value of a parameter (this is done by moving joystick up or down)
 
 void Display::increaseValue(int &value, int minVal, int maxVal)
 {

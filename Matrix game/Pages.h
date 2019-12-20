@@ -27,6 +27,8 @@
 
 #define GAME_FINISHED 0
 
+// every screen has a corresponding number -> avoid hardcoding
+
 #define MAIN_MENU_SCREEN 0 
 #define START_GAME_SCREEN 1
 #define HIGHSCORE_SCREEN 2
@@ -44,6 +46,9 @@
 #define SETTINGS_STARTING_LEVEL_SCREEN 14
 #define SETTINGS_CHOOSE_DIFFICULTY_SCREEN 15
 
+// children = number of elements to be displayed in content
+// for instance, menu has 4 children: start game, settings, highscore, info
+
 #define MAIN_MENU_CHILDREN 4
 #define GAME_NO_OF_PLAYERS_CHILDREN 0
 #define GAME_CALIBRATING_CHILDREN 0
@@ -55,6 +60,11 @@
 #define SETTINGS_CHILDREN 2
 #define SETTINGS_STARTING_LEVEL_CHILDREN 0
 #define SETTINGS_CHOOSE_DIFFICULTY_CHILDREN 3
+
+// there are three types of screen: SCROLL, SET_VALUE, SHOW
+// SCROLL = a screen when I push the joystick up/down to get another information (e.g. menu)
+// SET_VALUE = a screen when I push the joystick up/down to change the value (e.g. setting the number of players)
+// SHOW = a screen with only informations
 
 #define MAIN_MENU_TYPE SCROLL
 #define GAME_NO_OF_PLAYERS_TYPE SET_VALUE

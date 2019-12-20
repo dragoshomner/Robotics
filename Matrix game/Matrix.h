@@ -32,6 +32,8 @@ void Matrix::initialize()
   clearDisplay(0);
 }
 
+// counter -> want to freeze the system while it is displayed (no reads, writes, movements)
+
 void Matrix::showCounter(){
   showThree();
   delay(1000);
@@ -42,6 +44,8 @@ void Matrix::showCounter(){
   showDot();
   delay(1000);
 }
+
+// used this way of printing because, firstly, I had a 2D array for every number, but not enough memory :) 
 
 void Matrix::showDot()
 {
@@ -142,6 +146,8 @@ void Matrix::showBlank()
     }
   }
 }
+
+// one method used for all 4 directions and only one matrix, to avoid initializing one matrix for every arrow (too small dynamic memory :( )
 
 void Matrix::showDirection(int moveDirection)
 {

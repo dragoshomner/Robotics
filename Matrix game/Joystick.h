@@ -3,6 +3,8 @@
 
 #include "Pins.h"
 
+// used class, coded from scratch, to return the movement of the joystick using constants UP, DOWN, LEFT, RIGHT
+
 class Joystick{
   private:
     const int joyThreshold = 200;

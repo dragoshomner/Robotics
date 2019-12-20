@@ -40,7 +40,8 @@ void App::initialize(){
 
 void App::update(){
   display->update();
-  
+
+  // Config.gameStarted is true after the number of player is selected, and now, the user cannot go back to menu until he finishes the game
   if(Config.gameStarted){
     game.update();
     display->refresh();

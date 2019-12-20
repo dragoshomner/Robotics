@@ -35,6 +35,8 @@ class Game{
     void getWinner();
 };
 
+// initialize all the parameters and object used in the game, such as sensors or matrix
+
 void Game::initialize()
 {
   sensorUpDown.initialize(SENSOR_UP_DOWN_PINS.echo, SENSOR_UP_DOWN_PINS.trig);
@@ -59,10 +61,12 @@ void Game::calibrateSensors()
 
 void Game::update()
 {
+  // check if both sensors hits the wall, in the calibrating screen
   if(!Config.sensorUpDownCalibrated || !Config.sensorLeftRightCalibrated){
     calibrateSensors();
   }
 
+  // check if the player is in the middle of the game zone, in the "go inside" screen
   else if(!Config.gamePlayerIsInside){
     checkPlayerIsInside();
   }
@@ -88,12 +92,17 @@ void Game::update()
       for(int movement = 0 ; movement < totalMoves ; movement ++){
         int moveDirection = random(1, 5);
         matrix.showDirection(moveDirection);
+
+        // the delay is used because is better than checking the difference of the times, because I want to freeze the system while the 
+        // matrix show the moves and, moreover, it is a loading screen
+        
         moves[movement] = moveDirection;
         delay(1000);
         matrix.showDot();
         delay(1000);
       }
-      
+
+      // blinks the screen to let user know that the sequence of movements is finished and will start his turn
       matrix.showBlank();
       delay(500);
       matrix.showDot();
@@ -104,7 +113,8 @@ void Game::update()
       currentMove = 0;
     }
     else if(playerTurn){
-
+      
+      // counter down
       if((unsigned long)millis() - lastTimeClock >= SECOND){
         lastTimeClock = millis();
         Config.remainingTime --;
@@ -124,6 +134,9 @@ void Game::update()
           }
         }
       }
+
+      // algorithm of stabilization the sensors for a more precise human position detection
+      
       int distanceUpDown = sensorUpDown.getDistance();
       int distanceLeftRight = sensorLeftRight.getDistance();
     
@@ -137,6 +150,9 @@ void Game::update()
         isDownCounter = isDown ? isDownCounter + 1 : isDownCounter;
         isLeftCounter = isLeft ? isLeftCounter + 1 : isLeftCounter;
         isRightCounter = isRight ? isRightCounter + 1 : isRightCounter;
+
+        // use the delay to freeze the system while loading the current position of the player
+        // moreover, is a good practice for stabilising the sensors
 
         if(isUpCounter > validationCounter){
           matrix.showDirection(UP); 
@@ -183,6 +199,8 @@ void Game::update()
               Config.newHighscore = true;
               EEPROM.write(Config.difficulty - 1, Config.highscore[Config.difficulty]);
             }
+
+            // a breathing second for the player -> freeze the system
             delay(1000);
           }
           isCenterCounter = isUpCounter = isLeftCounter = isRightCounter = isDownCounter = 0;
@@ -205,6 +223,8 @@ void Game::checkPlayerIsInside()
     Config.gamePlayerIsInside = true;
   }
 }
+
+// not used method in the game because, even if the sensor are more precise, is harder for the player -> use for proffesional users :)
 
 bool Game::areStabilizedDistances(int distanceUpDown, int distanceLeftRight)
 {
