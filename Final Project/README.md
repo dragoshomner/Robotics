@@ -57,6 +57,7 @@ If a player lose and the other one still has lives, the winner's display will pr
 <h4>Info</h4> 
 <a name="info" />
 Name: Dragos Alexandru Homner
+
 @unibuc.robotics
 
 ## Links
